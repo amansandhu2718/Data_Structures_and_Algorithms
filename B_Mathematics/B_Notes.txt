@@ -1,0 +1,2 @@
+A number is palindrome if its reverse is equal to itself.
+To solve this problem  find reverse of a number and compare to itself

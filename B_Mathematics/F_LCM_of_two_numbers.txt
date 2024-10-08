@@ -1,0 +1,23 @@
+We have 2 approaches to solve the problem: Naive Approach & Efficient Approach
+
+1. Naive Approach
+
+The basic approach is to find the maximum of both numbers, then iterate from that number, till we find a number that is completely divisible by both numbers.
+
+Time Complexity: O(a*b - max(a,b))
+
+
+
+2. Efficient Approach
+
+An efficient solution is based on the below formula for LCM of two numbers ‘a’ and ‘b’. 
+
+a x b = LCM(a, b) * GCD (a, b)
+
+LCM(a, b) = (a x b) / GCD(a, b)
+
+Here, we calculate GCD using, Optimised Euclidean Algorithm.
+
+Then, further, calculate LCM.
+
+Time Complexity: O(log(min(a,b))

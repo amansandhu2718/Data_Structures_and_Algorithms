@@ -1,0 +1,90 @@
+This program is to find Trailing zeroes in factorial of a given number
+
+example 1: factorial of 5 = 120 ( have 1 zero ) 
+example 2: factorial of 10 = 3628800 ( have 1 zero ) 
+
+Naive Approach :
+    
+    find factorial of given number and count trailing zeroes in that number
+    
+    COMPLEXITY:
+        time : O(n) 
+    ISSUE: 
+        overflow for slightly higer values of n 
+        example factorial of 20 will have 19 digits and 19 digits cannot be stored in datatype like int.
+
+EFFICIENT SOLUTION
+
+    if we have a number and we want to count how many trailing zeroes this number has you can count pairs of 2 and 5 in prime factorization of that number.
+    
+    example 1:
+    number 10
+    2*5*1 -> there is only one pair and 10 have only 1 trailing zero
+
+    example 2
+    number 200
+    5*5*2*2*2-> 2 pairs of 2 and 5  hence it has 2 trailing zeroes.
+
+
+    To find trailing zeros count how many 2's and 5's are there in prime factorization in given factorial.
+    because 2's and 5 together form a trialing zero.
+
+
+    Interesting fact about factorials: number of 5's are less than 2
+            example : 1*2*3*4*5*6*7*8*9*10....25...n
+                        _     _          _
+    every fifth number  here is going to have 5 as a prime factor
+    if number is n then , there will be n/5 5's in prime factorization atleast.
+
+    atleast because some numbers have more than one 5's as prime factor 
+    example 25
+
+
+    trailing zero count = n/5 +n/25 + n/125...... 
+
+    COMPLEXITY O(log n) 
+
+    ISSUE : no overflow issue
+
+
+
+    26
+    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+            ^          ^             ^               ^              ^
+            1          2             3               4              6          there are 6 trailing zeros in factorial of 26
+
+-------------------------------------------------------------------------------------------------------------------------------------
+                                                            IN OTHER WORDS
+-------------------------------------------------------------------------------------------------------------------------------------
+We have 2 approaches to solve the problem: Naive Approach & Efficient Approach
+
+1. Naive Approach
+
+A simple method is to first calculate the factorial of n, then count trailing 0s in the result (We can count trailing 0s by repeatedly dividing the factorial by 10 till the remainder is not 0).
+
+But, this method can cause overflow for slightly bigger numbers as the factorial of a number is a big number. So, we prefer the Efficient Approach
+
+
+
+2. Efficient Approach
+
+The idea is to consider prime factors of a factorial n. A trailing zero is always produced by prime factors 2 and 5. Our task is done if we can count the number of 5s and 2s. Consider the following examples:
+
+n = 5: There is one 5 and 3 2s in prime factors of 5! (2 * 2 * 2 * 3 * 5). So a count of trailing 0s is 1.
+
+
+n = 11: There are two 5s and eight 2s in prime factors of 11! (2 8 * 34 * 52 * 7). So the count of trailing 0s is 2.
+We can easily observe that the number of 2s in prime factors is always more than or equal to the number of 5s. So if we count 5s in prime factors, we are done.
+
+Following is the summarized formula for counting trailing 0s:
+
+Trailing 0s in n! = Count of 5s in prime factors of n! = floor(n/5) + floor(n/25) + floor(n/125) + ....
+
+
+
+
+
+26
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+        ^          ^             ^               ^              ^
+        1          2             3               4              6          there are 6 trailing zeros in factorial of 26
